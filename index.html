@@ -42,7 +42,7 @@
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to the <span class="text-primary-500">Spider's Lair</span></h1>
                 <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">Where technology meets creativity in a web of knowledge</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="articles.html" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    <a href="articles" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
                         Explore Articles
                     </a>
 <button onclick="document.getElementById('joinModal').classList.remove('hidden')" class="bg-secondary-600 hover:bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
@@ -71,7 +71,7 @@
                             <span class="text-xs text-gray-400">5 min read</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                            <a href="articles/ip-addressing-guide.html">Understanding IP Addressing: A Complete Guide</a>
+                            <a href="articles/ip-addressing-guide">Understanding IP Addressing: A Complete Guide</a>
                         </h3>
 <p class="text-gray-400 mb-4">Learn the fundamentals of IPv4 and IPv6 addressing, subnetting techniques, and practical configuration examples.</p>
                         <div class="flex justify-between items-center text-sm">
@@ -92,7 +92,7 @@
                             <span class="text-xs text-gray-400">8 min read</span>
                         </div>
                             <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                                <a href="articles/network-security-basics.html">Modern Web Security Best Practices</a>
+                                <a href="articles/network-security-basics">Modern Web Security Best Practices</a>
                             </h3>
 <p class="text-gray-400 mb-4">Explore essential security measures every web developer should implement to protect against common vulnerabilities.</p>
                         <div class="flex justify-between items-center text-sm">
@@ -113,7 +113,7 @@
                             <span class="text-xs text-gray-400">12 min read</span>
                         </div>
                             <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                                <a href="articles/docker-container-guide.html">Containerization with Docker: From Basics to Production</a>
+                                <a href="articles/docker-container-guide">Containerization with Docker: From Basics to Production</a>
                             </h3>
 <p class="text-gray-400 mb-4">A comprehensive guide to containerizing applications, managing images, and deploying with Docker in production environments.</p>
                         <div class="flex justify-between items-center text-sm">
@@ -131,42 +131,42 @@
         <section class="mb-16">
             <h2 class="text-2xl md:text-3xl font-bold mb-8">Explore Categories</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <a href="articles.html?category=networking" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=networking" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="globe" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-medium">Networking</h3>
                     <p class="text-xs text-gray-400 mt-1">12 Articles</p>
                 </a>
-                <a href="articles.html?category=security" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=security" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="lock" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-medium">Security</h3>
                     <p class="text-xs text-gray-400 mt-1">8 Articles</p>
                 </a>
-                <a href="articles.html?category=programming" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=programming" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="code" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-medium">Programming</h3>
                     <p class="text-xs text-gray-400 mt-1">15 Articles</p>
                 </a>
-                <a href="articles.html?category=sysadmin" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=sysadmin" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="server" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-medium">SysAdmin</h3>
                     <p class="text-xs text-gray-400 mt-1">10 Articles</p>
                 </a>
-                <a href="articles.html?category=cloud" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=cloud" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="cloud" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-medium">Cloud</h3>
                     <p class="text-xs text-gray-400 mt-1">7 Articles</p>
                 </a>
-                <a href="articles.html?category=devops" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                <a href="articles?category=devops" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
                     <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <i data-feather="git-merge" class="w-6 h-6"></i>
                     </div>
