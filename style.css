@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+    --primary-500: #8b5cf6;
+    --primary-600: #7c3aed;
+    --secondary-500: #ec4899;
+    --secondary-600: #db2777;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+code, pre {
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+/* Article navigation */
+.article-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+}
+
+.article-nav > div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .article-nav > div {
+        flex-direction: column;
+    }
+}
+/* Modal styling */
+#joinModal {
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+}
+
+#joinModal div {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for cards */
+.article-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress bar for reading */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+    z-index: 100;
+}
+
+/* Code block styling */
+pre {
+    background: #1e293b;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+code {
+    color: #f8fafc;
+    font-size: 0.9em;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #374151;
+}
+
+th {
+    background-color: #1f2937;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #1f2937;
+}
+
+/* Callout boxes */
+.callout {
+    padding: 1rem;
+    border-left: 4px solid;
+    border-radius: 0.25rem;
+    margin: 1rem 0;
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.callout.tip {
+    border-color: var(--primary-500);
+}
+
+.callout.warning {
+    border-color: #f59e0b;
+}
+
+.callout.note {
+    border-color: #60a5fa;
+}
+
+.callout.important {
+    border-color: var(--secondary-500);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+}
