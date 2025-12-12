@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": "getting-started-web-dev",
+      "title": "Getting Started with Web Development in 2025",
+      "author": "WebWeaver",
+      "date": "2025-01-15",
+      "category": "Web Development",
+      "tags": ["beginners", "html", "css", "javascript"],
+      "excerpt": "A comprehensive guide for beginners looking to start their journey in web development. Learn the fundamentals and essential tools you need to know.",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
+      "readTime": "8 min read",
+      "content": "<h2>Introduction</h2><p>Web development has never been more accessible. In this guide, we'll walk through everything you need to know to get started.</p><h2>The Basics</h2><p>Every web developer should master three core technologies: HTML for structure, CSS for styling, and JavaScript for interactivity.</p><h2>Getting Started</h2><p>Start with HTML to build the skeleton of your pages, then add CSS to make them beautiful, and finally JavaScript to make them interactive.</p><h2>Next Steps</h2><p>Once you're comfortable with the basics, explore frameworks like React, Vue, or Angular to build more complex applications.</p>"
+    },
+    {
+      "id": "javascript-async-await",
+      "title": "Mastering Async/Await in JavaScript",
+      "author": "WebWeaver",
+      "date": "2025-01-10",
+      "category": "JavaScript",
+      "tags": ["javascript", "async", "promises", "advanced"],
+      "excerpt": "Dive deep into asynchronous JavaScript and learn how to write cleaner, more maintainable code using async/await syntax.",
+      "image": "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800",
+      "readTime": "12 min read",
+      "content": "<h2>Understanding Asynchronous Code</h2><p>JavaScript is single-threaded, but async operations allow us to handle time-consuming tasks without blocking execution.</p><h2>From Callbacks to Promises</h2><p>We've evolved from callback hell to the more elegant Promise syntax, and now to the even cleaner async/await pattern.</p><h2>Practical Examples</h2><p>Learn how to fetch data from APIs, handle errors gracefully, and chain multiple async operations together.</p>"
+    },
+    {
+      "id": "css-grid-layout",
+      "title": "Building Responsive Layouts with CSS Grid",
+      "author": "WebWeaver",
+      "date": "2025-01-05",
+      "category": "CSS",
+      "tags": ["css", "layout", "responsive", "design"],
+      "excerpt": "CSS Grid revolutionized web layouts. Learn how to create complex, responsive designs with minimal code.",
+      "image": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800",
+      "readTime": "10 min read",
+      "content": "<h2>Why CSS Grid?</h2><p>CSS Grid provides a powerful two-dimensional layout system that makes complex designs simple to implement.</p><h2>Grid Basics</h2><p>Learn about grid containers, grid items, rows, columns, and gaps.</p><h2>Advanced Techniques</h2><p>Explore named grid areas, auto-placement, and responsive design patterns using Grid.</p>"
+    }
+  ]
+}
