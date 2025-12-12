@@ -34,14 +34,14 @@
     <main class="flex-grow container mx-auto px-4 py-8">
         <!-- Back to Home Button -->
         <div class="mb-6">
-            <a href="index" class="text-primary-500 hover:text-primary-400 flex items-center">
+            <a href="index.html" class="text-primary-500 hover:text-primary-400 flex items-center">
                 <i data-feather="arrow-left" class="mr-2 w-5 h-5"></i> Back to Home
             </a>
         </div>
         
         <!-- Page Header -->
         <div class="mb-12 text-center mt-4">
-<h1 class="text-3xl md:text-5xl font-bold mb-4">Knowledge Repository</h1>
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Knowledge Repository</h1>
             <p class="text-xl text-gray-400 max-w-3xl mx-auto">Browse our collection of technical articles, tutorials, and guides</p>
         </div>
 
@@ -50,28 +50,20 @@
             <div class="flex flex-col md:flex-row gap-6">
                 <!-- Search Bar -->
                 <div class="flex-grow relative">
-                    <input type="text" id="searchInput" placeholder="Search articles..." 
+                    <input type="text" id="search-input" placeholder="Search articles..." 
                            class="w-full px-4 py-3 pl-12 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <i data-feather="search" class="absolute left-4 top-3.5 text-gray-400"></i>
                 </div>
                 
                 <!-- Category Filter -->
-                <div class="w-full md:w-64">
-                    <select id="categoryFilter" class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
-                        <option value="all">All Categories</option>
-                        <option value="networking">Networking</option>
-                        <option value="security">Security</option>
-                        <option value="programming">Programming</option>
-                        <option value="sysadmin">SysAdmin</option>
-                        <option value="cloud">Cloud</option>
-                        <option value="devops">DevOps</option>
-                    </select>
+                <div id="category-filter" class="w-full md:w-64">
+                    <!-- Category filter will be dynamically generated -->
                 </div>
             </div>
         </div>
 
         <!-- Articles Grid -->
-        <div id="articlesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Articles will be loaded here by JavaScript -->
         </div>
 
@@ -105,176 +97,197 @@
     </section>
 
     <custom-footer></custom-footer>
-<script>
+
+    <script>
         feather.replace();
-        
-        // Articles data (would normally come from an API)
-        const articles = [
-            {
-                id: 1,
-                title: "Understanding IP Addressing: A Complete Guide",
-                excerpt: "Learn the fundamentals of IPv4 and IPv6 addressing, subnetting techniques, and practical configuration examples.",
-                category: "networking",
-                readTime: "5 min read",
-                date: "May 15, 2023",
-                image: "https://static.photos/technology/640x360/1",
-                url: "articles/ip-addressing-guide"
-            },
-            {
-                id: 2,
-                title: "Modern Web Security Best Practices",
-                excerpt: "Explore essential security measures every web developer should implement to protect against common vulnerabilities.",
-                category: "security",
-                readTime: "8 min read",
-                date: "April 28, 2023",
-                image: "https://static.photos/technology/640x360/2",
-                url: "articles/network-security-basics"
-            },
-            {
-                id: 3,
-                title: "Containerization with Docker: From Basics to Production",
-                excerpt: "A comprehensive guide to containerizing applications, managing images, and deploying with Docker in production environments.",
-                category: "devops",
-                readTime: "12 min read",
-                date: "March 15, 2023",
-                image: "https://static.photos/technology/640x360/3",
-                url: "articles/docker-container-guide"
-            },
-            {
-                id: 4,
-                title: "JavaScript ES6+ Features You Should Know",
-                excerpt: "Modern JavaScript features that every developer should be using in their projects today.",
-                category: "programming",
-                readTime: "6 min read",
-                date: "June 10, 2023",
-                image: "https://static.photos/technology/640x360/4",
-                url: "articles/javascript-ES6+-features"
-            },
-            {
-                id: 5,
-                title: "Linux Server Hardening Checklist",
-                excerpt: "Essential security measures to protect your Linux servers from common threats.",
-                category: "sysadmin",
-                readTime: "10 min read",
-                date: "May 22, 2023",
-                image: "https://static.photos/technology/640x360/5",
-                url: "#"
-            },
-            {
-                id: 6,
-                title: "AWS Cloud Architecture Patterns",
-                excerpt: "Common architectural patterns for building scalable and resilient applications on AWS.",
-                category: "cloud",
-                readTime: "9 min read",
-                date: "April 15, 2023",
-                image: "https://static.photos/technology/640x360/6",
-                url: "#"
+
+        // Article Manager Class
+        class ArticleManager {
+            constructor() {
+                this.articles = [];
+                this.currentFilter = 'all';
+                this.searchTerm = '';
             }
-        ];
 
-        // DOM Elements
-        const articlesContainer = document.getElementById('articlesContainer');
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const noResults = document.getElementById('noResults');
-
-        // Display articles
-        function displayArticles(filteredArticles) {
-            articlesContainer.innerHTML = '';
-            
-            if (filteredArticles.length === 0) {
-                noResults.classList.remove('hidden');
-                loadingIndicator.classList.add('hidden');
-                return;
+            async loadArticles() {
+                try {
+                    const response = await fetch('articles.json');
+                    if (!response.ok) throw new Error('Failed to load articles');
+                    const data = await response.json();
+                    this.articles = data.articles || [];
+                    return this.articles;
+                } catch (error) {
+                    console.error('Error loading articles:', error);
+                    return [];
+                }
             }
-            
-            noResults.classList.add('hidden');
-            
-            filteredArticles.forEach(article => {
-                const articleCard = document.createElement('article');
-                articleCard.className = 'bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all';
-                articleCard.innerHTML = `
-                    <div class="h-48 bg-[url('${article.image}')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs ${getCategoryColor(article.category)} text-white px-2 py-1 rounded">${formatCategory(article.category)}</span>
-                            <span class="text-xs text-gray-400">${article.readTime}</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                            <a href="${article.url}">${article.title}</a>
-                        </h3>
-                        <p class="text-gray-400 mb-4">${article.excerpt}</p>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-500">${article.date}</span>
-                            <a href="${article.url}" class="text-primary-500 hover:text-primary-400 flex items-center">
-                                Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                `;
-                articlesContainer.appendChild(articleCard);
-            });
-            
-            feather.replace();
-            loadingIndicator.classList.add('hidden');
-        }
 
-        // Filter articles based on search and category
-        function filterArticles() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const selectedCategory = categoryFilter.value;
-            
-            loadingIndicator.classList.remove('hidden');
-            
-            // Simulate API delay
-            setTimeout(() => {
-                const filtered = articles.filter(article => {
-                    const matchesSearch = article.title.toLowerCase().includes(searchTerm) || 
-                                         article.excerpt.toLowerCase().includes(searchTerm);
-                    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+            getArticles(sortBy = 'date') {
+                return [...this.articles].sort((a, b) => {
+                    if (sortBy === 'date') {
+                        return new Date(b.date) - new Date(a.date);
+                    }
+                    return 0;
+                });
+            }
+
+            getCategories() {
+                return [...new Set(this.articles.map(article => article.category))];
+            }
+
+            formatDate(dateString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString('en-US', options);
+            }
+
+            getCategoryColor(category) {
+                const colors = {
+                    'Networking': 'bg-primary-600',
+                    'Security': 'bg-secondary-600',
+                    'Programming': 'bg-purple-600',
+                    'SysAdmin': 'bg-blue-600',
+                    'Cloud': 'bg-green-600',
+                    'DevOps': 'bg-yellow-600',
+                    'Web Development': 'bg-primary-600',
+                    'JavaScript': 'bg-yellow-600',
+                    'CSS': 'bg-blue-600'
+                };
+                return colors[category] || 'bg-gray-600';
+            }
+
+            searchAndFilter() {
+                const filtered = this.articles.filter(article => {
+                    const matchesSearch = !this.searchTerm || 
+                        article.title.toLowerCase().includes(this.searchTerm) ||
+                        article.excerpt.toLowerCase().includes(this.searchTerm) ||
+                        article.tags.some(tag => tag.toLowerCase().includes(this.searchTerm));
+                    
+                    const matchesCategory = this.currentFilter === 'all' || 
+                        article.category === this.currentFilter;
+                    
                     return matchesSearch && matchesCategory;
                 });
                 
-                displayArticles(filtered);
-            }, 500);
+                return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            displayArticles(filteredArticles) {
+                const container = document.getElementById('articles-container');
+                const loadingIndicator = document.getElementById('loadingIndicator');
+                const noResults = document.getElementById('noResults');
+                
+                loadingIndicator.classList.add('hidden');
+                container.innerHTML = '';
+                
+                if (filteredArticles.length === 0) {
+                    noResults.classList.remove('hidden');
+                    feather.replace();
+                    return;
+                }
+                
+                noResults.classList.add('hidden');
+                
+                filteredArticles.forEach(article => {
+                    const articleCard = document.createElement('article');
+                    articleCard.className = 'bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all';
+                    articleCard.innerHTML = `
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('${article.image}')"></div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs ${this.getCategoryColor(article.category)} text-white px-2 py-1 rounded">${article.category}</span>
+                                <span class="text-xs text-gray-400">${article.readTime}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
+                                <a href="article.html?id=${article.id}">${article.title}</a>
+                            </h3>
+                            <p class="text-gray-400 mb-4">${article.excerpt}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${article.tags.map(tag => `
+                                    <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">#${tag}</span>
+                                `).join('')}
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">${this.formatDate(article.date)}</span>
+                                <a href="article.html?id=${article.id}" class="text-primary-500 hover:text-primary-400 flex items-center">
+                                    Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(articleCard);
+                });
+                
+                feather.replace();
+            }
+
+            renderCategoryFilter() {
+                const container = document.getElementById('category-filter');
+                const categories = this.getCategories();
+                
+                const select = document.createElement('select');
+                select.id = 'categoryFilterSelect';
+                select.className = 'w-full px-4 py-3 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500';
+                
+                select.innerHTML = `
+                    <option value="all">All Categories</option>
+                    ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                `;
+                
+                select.addEventListener('change', (e) => {
+                    this.currentFilter = e.target.value;
+                    this.filterArticles();
+                });
+                
+                container.appendChild(select);
+            }
+
+            setupSearch() {
+                const searchInput = document.getElementById('search-input');
+                searchInput.addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.filterArticles();
+                });
+            }
+
+            filterArticles() {
+                const loadingIndicator = document.getElementById('loadingIndicator');
+                loadingIndicator.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    const filtered = this.searchAndFilter();
+                    this.displayArticles(filtered);
+                }, 300);
+            }
+
+            handleURLParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category');
+                
+                if (category) {
+                    this.currentFilter = category;
+                    const select = document.getElementById('categoryFilterSelect');
+                    if (select) {
+                        select.value = category;
+                    }
+                }
+            }
+
+            async init() {
+                await this.loadArticles();
+                this.renderCategoryFilter();
+                this.setupSearch();
+                this.handleURLParams();
+                this.filterArticles();
+            }
         }
 
-        // Helper functions
-        function getCategoryColor(category) {
-            const colors = {
-                networking: 'bg-primary-600',
-                security: 'bg-secondary-600',
-                programming: 'bg-purple-600',
-                sysadmin: 'bg-blue-600',
-                cloud: 'bg-green-600',
-                devops: 'bg-yellow-600'
-            };
-            return colors[category] || 'bg-gray-600';
-        }
-
-        function formatCategory(category) {
-            return category.charAt(0).toUpperCase() + category.slice(1);
-        }
-
-        // Event listeners
-        searchInput.addEventListener('input', filterArticles);
-        categoryFilter.addEventListener('change', filterArticles);
-        // Handle URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // Initial load with URL parameter
-        const categoryParam = getUrlParameter('category');
-        if (categoryParam) {
-            categoryFilter.value = categoryParam;
-        }
-        filterArticles();
-</script>
+        // Initialize
+        const articleManager = new ArticleManager();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            articleManager.init();
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
