@@ -42,13 +42,13 @@
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to the <span class="text-primary-500">Spider's Lair</span></h1>
                 <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">Where technology meets creativity in a web of knowledge</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="articles" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    <a href="articles.html" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
                         Explore Articles
                     </a>
-<button onclick="document.getElementById('joinModal').classList.remove('hidden')" class="bg-secondary-600 hover:bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    <button onclick="document.getElementById('joinModal').classList.remove('hidden')" class="bg-secondary-600 hover:bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
                         Join Our Web
                     </button>
-</div>
+                </div>
             </div>
         </section>
 
@@ -56,124 +56,26 @@
         <section class="mb-16">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold">Featured Articles</h2>
-                <a href="#" class="text-primary-500 hover:text-primary-400 flex items-center">
+                <a href="articles.html" class="text-primary-500 hover:text-primary-400 flex items-center">
                     View All <i data-feather="chevron-right" class="ml-1 w-5 h-5"></i>
                 </a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Article Card 1 -->
-                <article class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                    <div class="h-48 bg-[url('https://static.photos/technology/640x360/1')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs bg-primary-600 text-white px-2 py-1 rounded">Networking</span>
-                            <span class="text-xs text-gray-400">5 min read</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                            <a href="articles/ip-addressing-guide">Understanding IP Addressing: A Complete Guide</a>
-                        </h3>
-<p class="text-gray-400 mb-4">Learn the fundamentals of IPv4 and IPv6 addressing, subnetting techniques, and practical configuration examples.</p>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-500">May 15, 2023</span>
-                            <a href="#" class="text-primary-500 hover:text-primary-400 flex items-center">
-                                Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article Card 2 -->
-                <article class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                    <div class="h-48 bg-[url('https://static.photos/technology/640x360/2')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs bg-secondary-600 text-white px-2 py-1 rounded">Security</span>
-                            <span class="text-xs text-gray-400">8 min read</span>
-                        </div>
-                            <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                                <a href="articles/network-security-basics">Modern Web Security Best Practices</a>
-                            </h3>
-<p class="text-gray-400 mb-4">Explore essential security measures every web developer should implement to protect against common vulnerabilities.</p>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-500">April 28, 2023</span>
-                            <a href="#" class="text-primary-500 hover:text-primary-400 flex items-center">
-                                Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article Card 3 -->
-                <article class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                    <div class="h-48 bg-[url('https://static.photos/technology/640x360/3')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs bg-green-600 text-white px-2 py-1 rounded">DevOps</span>
-                            <span class="text-xs text-gray-400">12 min read</span>
-                        </div>
-                            <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
-                                <a href="articles/docker-container-guide">Containerization with Docker: From Basics to Production</a>
-                            </h3>
-<p class="text-gray-400 mb-4">A comprehensive guide to containerizing applications, managing images, and deploying with Docker in production environments.</p>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-500">March 15, 2023</span>
-                            <a href="#" class="text-primary-500 hover:text-primary-400 flex items-center">
-                                Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
+            <div id="featured-articles" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loading indicator -->
+                <div class="col-span-full text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-500"></div>
+                    <p class="mt-4 text-gray-400">Loading articles...</p>
+                </div>
             </div>
         </section>
 
         <!-- Categories Section -->
         <section class="mb-16">
             <h2 class="text-2xl md:text-3xl font-bold mb-8">Explore Categories</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <a href="articles?category=networking" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="globe" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">Networking</h3>
-                    <p class="text-xs text-gray-400 mt-1">12 Articles</p>
-                </a>
-                <a href="articles?category=security" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="lock" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">Security</h3>
-                    <p class="text-xs text-gray-400 mt-1">8 Articles</p>
-                </a>
-                <a href="articles?category=programming" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="code" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">Programming</h3>
-                    <p class="text-xs text-gray-400 mt-1">15 Articles</p>
-                </a>
-                <a href="articles?category=sysadmin" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="server" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">SysAdmin</h3>
-                    <p class="text-xs text-gray-400 mt-1">10 Articles</p>
-                </a>
-                <a href="articles?category=cloud" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="cloud" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">Cloud</h3>
-                    <p class="text-xs text-gray-400 mt-1">7 Articles</p>
-                </a>
-                <a href="articles?category=devops" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
-                    <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-feather="git-merge" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-medium">DevOps</h3>
-                    <p class="text-xs text-gray-400 mt-1">9 Articles</p>
-                </a>
-</div>
+            <div id="categories-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Categories will be loaded dynamically -->
+            </div>
         </section>
 
         <!-- Newsletter CTA -->
@@ -182,7 +84,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-4">Join Our Web</h2>
                 <p class="text-gray-400 mb-6">Subscribe to our newsletter and get the latest articles, tutorials, and resources delivered straight to your inbox.</p>
                 <form class="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto">
-                    <input type="name" placeholder="Your First Name" class="glex-glow px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500")>
+                    <input type="name" placeholder="Your First Name" class="flex-grow px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <button type="submit" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
                         Subscribe
@@ -224,6 +126,146 @@
             <p class="text-xs text-gray-400 mt-4">We'll never share your information without your permission.</p>
         </div>
     </div>
+
+    <script>
+        // Homepage Article Manager
+        class HomePageManager {
+            constructor() {
+                this.articles = [];
+            }
+
+            async loadArticles() {
+                try {
+                    const response = await fetch('articles.json');
+                    if (!response.ok) throw new Error('Failed to load articles');
+                    const data = await response.json();
+                    this.articles = data.articles || [];
+                    return this.articles;
+                } catch (error) {
+                    console.error('Error loading articles:', error);
+                    return [];
+                }
+            }
+
+            getArticles() {
+                return [...this.articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            formatDate(dateString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString('en-US', options);
+            }
+
+            getCategoryColor(category) {
+                const colors = {
+                    'Networking': 'bg-primary-600',
+                    'Security': 'bg-secondary-600',
+                    'Programming': 'bg-purple-600',
+                    'SysAdmin': 'bg-blue-600',
+                    'Cloud': 'bg-green-600',
+                    'DevOps': 'bg-yellow-600',
+                    'Web Development': 'bg-primary-600',
+                    'JavaScript': 'bg-yellow-600',
+                    'CSS': 'bg-blue-600'
+                };
+                return colors[category] || 'bg-gray-600';
+            }
+
+            getCategoryIcon(category) {
+                const icons = {
+                    'Networking': 'globe',
+                    'Security': 'lock',
+                    'Programming': 'code',
+                    'SysAdmin': 'server',
+                    'Cloud': 'cloud',
+                    'DevOps': 'git-merge',
+                    'Web Development': 'layout',
+                    'JavaScript': 'code',
+                    'CSS': 'layout'
+                };
+                return icons[category] || 'file-text';
+            }
+
+            getCategoryCounts() {
+                const counts = {};
+                this.articles.forEach(article => {
+                    counts[article.category] = (counts[article.category] || 0) + 1;
+                });
+                return counts;
+            }
+
+            renderFeaturedArticles() {
+                const container = document.getElementById('featured-articles');
+                const featured = this.getArticles().slice(0, 3); // Get top 3 most recent
+
+                if (featured.length === 0) {
+                    container.innerHTML = '<p class="col-span-full text-center text-gray-400">No articles available yet.</p>';
+                    feather.replace();
+                    return;
+                }
+
+                container.innerHTML = featured.map(article => `
+                    <article class="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg transition-all">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('${article.image}')"></div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs ${this.getCategoryColor(article.category)} text-white px-2 py-1 rounded">${article.category}</span>
+                                <span class="text-xs text-gray-400">${article.readTime}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-primary-500 transition-colors">
+                                <a href="article.html?id=${article.id}">${article.title}</a>
+                            </h3>
+                            <p class="text-gray-400 mb-4">${article.excerpt}</p>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">${this.formatDate(article.date)}</span>
+                                <a href="article.html?id=${article.id}" class="text-primary-500 hover:text-primary-400 flex items-center">
+                                    Read More <i data-feather="chevron-right" class="ml-1 w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+
+                feather.replace();
+            }
+
+            renderCategories() {
+                const container = document.getElementById('categories-grid');
+                const counts = this.getCategoryCounts();
+                const categories = Object.keys(counts).sort();
+
+                if (categories.length === 0) {
+                    container.innerHTML = '<p class="col-span-full text-center text-gray-400">No categories available yet.</p>';
+                    return;
+                }
+
+                container.innerHTML = categories.map(category => `
+                    <a href="articles.html?category=${encodeURIComponent(category)}" class="bg-gray-800 hover:bg-gray-700 rounded-lg p-6 text-center transition-all">
+                        <div class="w-12 h-12 ${this.getCategoryColor(category)} rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-feather="${this.getCategoryIcon(category)}" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-medium">${category}</h3>
+                        <p class="text-xs text-gray-400 mt-1">${counts[category]} ${counts[category] === 1 ? 'Article' : 'Articles'}</p>
+                    </a>
+                `).join('');
+
+                feather.replace();
+            }
+
+            async init() {
+                await this.loadArticles();
+                this.renderFeaturedArticles();
+                this.renderCategories();
+            }
+        }
+
+        // Initialize
+        const homePageManager = new HomePageManager();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            homePageManager.init();
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
