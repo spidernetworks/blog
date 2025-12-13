@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="components/navbar.js"></script>
     <script src="components/footer.js"></script>
     <script src="components/search-modal.js"></script>
@@ -42,12 +41,9 @@
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to the <span class="text-primary-500">Spider's Lair</span></h1>
                 <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">Where technology meets creativity in a web of knowledge</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="articles.html" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    <a href="articles.html" class="bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-lg font-medium transition-all text-lg">
                         Explore Articles
                     </a>
-                    <button onclick="document.getElementById('joinModal').classList.remove('hidden')" class="bg-secondary-600 hover:bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
-                        Join Our Web
-                    </button>
                 </div>
             </div>
         </section>
@@ -70,6 +66,28 @@
             </div>
         </section>
 
+        <!-- Stats Section -->
+        <section class="mb-16 bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-primary-500" id="total-articles">0</div>
+                    <div class="text-gray-400 mt-2">Articles</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-secondary-500" id="total-categories">0</div>
+                    <div class="text-gray-400 mt-2">Categories</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-green-500">10K+</div>
+                    <div class="text-gray-400 mt-2">Readers</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-yellow-500">Weekly</div>
+                    <div class="text-gray-400 mt-2">Updates</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Categories Section -->
         <section class="mb-16">
             <h2 class="text-2xl md:text-3xl font-bold mb-8">Explore Categories</h2>
@@ -78,19 +96,55 @@
             </div>
         </section>
 
-        <!-- Newsletter CTA -->
-        <section class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-8 md:p-12 mb-12">
+        <!-- About Section -->
+        <section id="about" class="mb-16 bg-gray-800 rounded-xl p-8 md:p-12">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">Join Our Web</h2>
-                <p class="text-gray-400 mb-6">Subscribe to our newsletter and get the latest articles, tutorials, and resources delivered straight to your inbox.</p>
-                <form class="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto">
-                    <input type="name" placeholder="Your First Name" class="flex-grow px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <button type="submit" class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-lg font-medium transition-all">
-                        Subscribe
-                    </button>
-                </form>
-                <p class="text-xs text-gray-500 mt-3">We respect your privacy. Unsubscribe at any time.</p>
+                <h2 class="text-3xl font-bold mb-6">About WebWeaver's Lair</h2>
+                <p class="text-gray-300 text-lg mb-6">
+                    A digital sanctuary for tech enthusiasts, developers, and IT professionals. We weave together knowledge, 
+                    tutorials, and insights across networking, security, programming, and more.
+                </p>
+                <p class="text-gray-400">
+                    Whether you're a seasoned professional or just starting your journey in tech, you'll find valuable 
+                    resources and practical guides to help you grow.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-16">
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-8 md:p-12">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-6 text-center">Get In Touch</h2>
+                    <p class="text-gray-300 text-center mb-8">Have questions, suggestions, or want to collaborate? We'd love to hear from you!</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <a href="mailto:contact@webweaver.dev" class="flex items-center justify-center p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all">
+                            <i data-feather="mail" class="w-6 h-6 mr-3 text-primary-500"></i>
+                            <span>contact@webweaver.dev</span>
+                        </a>
+                        <a href="https://github.com/spidernetworks" target="_blank" class="flex items-center justify-center p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all">
+                            <i data-feather="github" class="w-6 h-6 mr-3 text-primary-500"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Your Name" required
+                                   class="px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <input type="email" placeholder="Your Email" required
+                                   class="px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <input type="text" placeholder="Subject"
+                               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <textarea placeholder="Your Message" rows="5" required
+                                  class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-500 text-white py-3 px-6 rounded-lg font-medium transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -194,9 +248,14 @@
                 return counts;
             }
 
+            updateStats() {
+                document.getElementById('total-articles').textContent = this.articles.length;
+                document.getElementById('total-categories').textContent = Object.keys(this.getCategoryCounts()).length;
+            }
+
             renderFeaturedArticles() {
                 const container = document.getElementById('featured-articles');
-                const featured = this.getArticles().slice(0, 3); // Get top 3 most recent
+                const featured = this.getArticles().slice(0, 3);
 
                 if (featured.length === 0) {
                     container.innerHTML = '<p class="col-span-full text-center text-gray-400">No articles available yet.</p>';
@@ -254,6 +313,7 @@
 
             async init() {
                 await this.loadArticles();
+                this.updateStats();
                 this.renderFeaturedArticles();
                 this.renderCategories();
             }
