@@ -119,7 +119,7 @@
       "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
       "readTime": "9 min read",
       "content": "<h2>The OSI Model Approach</h2><p>Troubleshooting follows the OSI model layers. Start at the physical layer and work up, or use a divide-and-conquer approach for efficiency.</p><h2>Essential Tools</h2><p>Master ping, traceroute, nslookup, netstat, and tcpdump. These command-line tools are your first line of defense when diagnosing issues.</p><h3>Ping and Traceroute</h3><p>Ping tests basic connectivity. Traceroute shows the path packets take and where delays or failures occur.</p><pre><code># Test connectivity\nping 8.8.8.8\n\n# Trace route to destination\ntraceroute google.com</code></pre><h2>DNS Issues</h2><p>Many 'network' problems are actually DNS issues. Use nslookup or dig to verify DNS resolution. Check /etc/resolv.conf on Linux systems.</p><h2>Physical Layer Problems</h2><p>Check cables, ports, and link lights. Verify interface status with ifconfig or ip commands. Physical issues are common but easy to fix.</p><h2>Firewall and Security</h2><p>Firewalls can block legitimate traffic. Temporarily disable or check firewall rules when troubleshooting. Don't forget about host-based firewalls!</p><h2>Packet Capture</h2><p>Use Wireshark or tcpdump to capture and analyze network traffic. This reveals exactly what's happening on the wire.</p><h2>Documentation</h2><p>Document your network topology and configurations. When troubleshooting, knowing what should be happening is as important as what is happening.</p>"
-    }
+    },
     {
       "id": "test",
       "title": "Test Article",
